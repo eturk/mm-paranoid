@@ -6,7 +6,7 @@ module MongoMapper
       extend ActiveSupport::Concern
 
       included do
-        key :deleted_at, Time, :index => true
+        key :deleted_at, Time
       end
 
       module InstanceMethods
