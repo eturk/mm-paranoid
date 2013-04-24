@@ -9,21 +9,19 @@ module MongoMapper
         key :deleted_at, Time
       end
 
-      module InstanceMethods
-        def destroy
-          run_callbacks(:destroy) do
-            self.deleted_at = Time.now
-            self.save
-          end
+      def destroy
+        run_callbacks(:destroy) do
+          self.deleted_at = Time.now
+          self.save
         end
+      end
 
-        def deleted?
-          !self.deleted_at.nil?
-        end
+      def deleted?
+        !self.deleted_at.nil?
+      end
 
-        def destroyed?
-          deleted?
-        end
+      def destroyed?
+        deleted?
       end
     end
   end
